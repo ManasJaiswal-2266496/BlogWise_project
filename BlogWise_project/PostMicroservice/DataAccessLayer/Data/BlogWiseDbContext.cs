@@ -20,10 +20,10 @@ namespace BlogWise_project.DataAccessLayer.Data
                 entity.Property(p => p.Title).IsRequired();
                 entity.Property(p => p.Content).IsRequired();
                 entity.Property(p => p.Author).IsRequired();
-                // Configure other properties as needed
+                
             });
 
-            // Configure other entity mappings and relationships here
+            
 
             base.OnModelCreating(modelBuilder);
         }

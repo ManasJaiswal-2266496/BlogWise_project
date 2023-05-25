@@ -61,7 +61,7 @@ namespace BlogWise_project.PostMicroservice.Services
             if (existingPost == null)
                 return false;
 
-            await _postRepository.DeletePostAsync(postId); // Pass the postId instead of existingPost
+            await _postRepository.DeletePostAsync(postId); 
             return true;
         }
 
@@ -74,7 +74,7 @@ namespace BlogWise_project.PostMicroservice.Services
                 Title = post.Title,
                 Content = post.Content,
                 Author = post.Author
-                // Map other properties as needed
+                
             };
         }
 
@@ -86,7 +86,7 @@ namespace BlogWise_project.PostMicroservice.Services
                 Title = postDto.Title,
                 Content = postDto.Content,
                 Author = postDto.Author
-                // Map other properties as needed
+                
             };
         }
     }
