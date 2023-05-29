@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using VoteMicroservice.DataAccessLayer.Models;
 
 namespace UserMicroservice.DataAccessLayer.Models
 {
@@ -24,5 +26,8 @@ namespace UserMicroservice.DataAccessLayer.Models
         public DateTime CreatedAt { get; set; }
 
         public DateTime ModifiedAt { get; set; }
+
+        // Add this navigation property
+        public ICollection<Vote> Votes { get; set; }
     }
 }

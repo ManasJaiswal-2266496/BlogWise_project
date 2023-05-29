@@ -8,6 +8,12 @@ using BlogWise_project.PostMicroservice.DataAccessLayer.Repository;
 using BlogWise_project.PostMicroservice.Services;
 using BlogWise_project.DataAccessLayer.Data;
 using Microsoft.EntityFrameworkCore;
+using UserMicroservice.DataAccessLayer.Data;
+using VoteMicroservice.DataAccessLayer.Data;
+using UserMicroservice.DataAccessLayer.Repository;
+using UserMicroservice.BusinessLayer.Services;
+using VoteMicroservice.DataAccessLayer.Repository;
+using VoteMicroservice.BusinessLayer.Services;
 
 namespace BlogWise_project
 {
@@ -32,6 +38,22 @@ namespace BlogWise_project
 
             builder.Services.AddScoped<IPostRepository, PostRepository>();
             builder.Services.AddScoped<IPostService, PostService>();
+
+            builder.Services.AddDbContext<UserMicroserviceDBContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+
+            builder.Services.AddDbContext<VoteMicroserviceDBContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            builder.Services.AddScoped<IVoteRepository, VoteRepository>();
+            builder.Services.AddScoped<IVoteService, VoteService>();
 
             var app = builder.Build();
 
