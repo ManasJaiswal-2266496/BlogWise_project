@@ -40,13 +40,14 @@ namespace UserMicroservice.BusinessLayer.Services
             if (existingUser == null)
                 return false;
 
-            existingUser.Name = user.UserName;
+            existingUser.FirstName = user.UserName;
             existingUser.Email = user.Email;
             existingUser.ModifiedAt = DateTime.Now;
 
             await _userRepository.UpdateUserAsync(existingUser);
             return true;
         }
+
 
         public async Task<bool> DeleteUserAsync(int userId)
         {
@@ -63,12 +64,13 @@ namespace UserMicroservice.BusinessLayer.Services
             return new UserDto
             {
                 UserId = user.Id,
-                UserName = user.Name,
+                UserName = $"{user.FirstName} {user.LastName}",
                 Email = user.Email,
                 CreatedAt = user.CreatedAt,
                 ModifiedAt = user.ModifiedAt
             };
         }
+
 
         private IEnumerable<UserDto> MapToUserDtos(IEnumerable<User> users)
         {
@@ -82,14 +84,20 @@ namespace UserMicroservice.BusinessLayer.Services
 
         private User MapToUser(UserDto userDto)
         {
+            var userName = userDto.UserName.Split(' ');
+            var firstName = userName[0];
+            var lastName = userName.Length > 1 ? userName[1] : string.Empty;
+
             return new User
             {
                 Id = userDto.UserId,
-                Name = userDto.UserName,
+                FirstName = firstName,
+                LastName = lastName,
                 Email = userDto.Email,
                 CreatedAt = userDto.CreatedAt,
                 ModifiedAt = userDto.ModifiedAt
             };
         }
+
     }
 }

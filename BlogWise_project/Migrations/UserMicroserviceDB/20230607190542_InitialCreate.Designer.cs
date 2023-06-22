@@ -9,10 +9,10 @@ using UserMicroservice.DataAccessLayer.Data;
 
 #nullable disable
 
-namespace BlogWise_project.UserMicroservice.Migrations
+namespace BlogWise_project.Migrations.UserMicroserviceDB
 {
     [DbContext(typeof(UserMicroserviceDBContext))]
-    [Migration("20230529214001_InitialCreate")]
+    [Migration("20230607190542_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -79,11 +79,15 @@ namespace BlogWise_project.UserMicroservice.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

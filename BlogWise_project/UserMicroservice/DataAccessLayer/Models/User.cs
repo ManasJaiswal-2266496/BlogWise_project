@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using VoteMicroservice.DataAccessLayer.Models;
 
 namespace UserMicroservice.DataAccessLayer.Models
 {
+    [Table("Users")]
     public class User
     {
         [Key]
@@ -19,9 +21,13 @@ namespace UserMicroservice.DataAccessLayer.Models
         [Required]
         public string Email { get; set; }
 
-        public string PhoneNumber { get; set; }
+        [Required]
+        public string Username { get; set; } // Add this line
 
-        public string Name { get; set; } // Add this line
+        [Required]
+        public string Password { get; set; } // Add this line
+
+        public string PhoneNumber { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

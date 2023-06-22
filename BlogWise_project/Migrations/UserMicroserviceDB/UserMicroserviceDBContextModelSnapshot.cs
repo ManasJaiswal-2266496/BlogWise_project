@@ -8,7 +8,7 @@ using UserMicroservice.DataAccessLayer.Data;
 
 #nullable disable
 
-namespace BlogWise_project.UserMicroservice.Migrations
+namespace BlogWise_project.Migrations.UserMicroserviceDB
 {
     [DbContext(typeof(UserMicroserviceDBContext))]
     partial class UserMicroserviceDBContextModelSnapshot : ModelSnapshot
@@ -20,7 +20,7 @@ namespace BlogWise_project.UserMicroservice.Migrations
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            //SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("BlogWise_project.DataAccessLayer.Models.Post", b =>
                 {
@@ -76,11 +76,15 @@ namespace BlogWise_project.UserMicroservice.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

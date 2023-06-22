@@ -1,7 +1,6 @@
 ﻿using BlogWise_project.ModelDto;
 using BlogWise_project.PostMicroservice.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
